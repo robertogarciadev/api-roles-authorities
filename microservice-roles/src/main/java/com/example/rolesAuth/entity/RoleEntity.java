@@ -1,6 +1,8 @@
 package com.example.rolesAuth.entity;
 
-import com.example.rolesAuth.entity.enums.RoleEnum;
+import java.util.Set;
+
+import org.hibernate.annotations.ManyToAny;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -8,28 +10,32 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-@Builder
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users")
-@Entity
-public class UserEntity {
+@Builder
+@Table(name = "roles")
+public class RoleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String mail;
-    private String password;
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_role") //FK for table users
-    private RoleEntity role;
+
+    private String name;
+
+    @ManyToAny(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "roles_permission",
+        joinColumns = @JoinColumn(name="id_role"),
+        inverseJoinColumns = @JoinColumn(name="id_permission")
+    )
+    Set<PermissionEntity> listAuth;
 }

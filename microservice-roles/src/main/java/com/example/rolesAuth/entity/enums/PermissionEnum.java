@@ -1,5 +1,5 @@
 package com.example.rolesAuth.entity.enums;
 
-public enum AuthoritiesEnum {
+public enum PermissionEnum {
     READ, CREATE, UPDATE, DELETE;
 }
