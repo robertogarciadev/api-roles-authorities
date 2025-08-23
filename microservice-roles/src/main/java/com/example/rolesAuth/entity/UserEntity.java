@@ -1,6 +1,5 @@
 package com.example.rolesAuth.entity;
 
-import com.example.rolesAuth.entity.enums.RoleEnum;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
