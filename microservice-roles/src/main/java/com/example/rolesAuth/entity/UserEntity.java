@@ -28,6 +28,8 @@ public class UserEntity {
     private Long id;
     private String mail;
     private String password;
+    private String name;
+    private String lastName;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_role") //FK for table users
     private RoleEntity role;
