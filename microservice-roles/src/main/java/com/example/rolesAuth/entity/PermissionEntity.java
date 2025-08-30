@@ -14,6 +14,7 @@ import lombok.*;
 
 
 @Entity
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -27,7 +28,7 @@ public class PermissionEntity {
     private Long id;
 
     private String name;
-
+    
     @ManyToMany(mappedBy = "listPermission")
     @Builder.Default
     private Set<RoleEntity> roles = new HashSet<>();

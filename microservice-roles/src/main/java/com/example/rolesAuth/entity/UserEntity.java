@@ -1,6 +1,7 @@
 package com.example.rolesAuth.entity;
 
 
+import com.example.rolesAuth.entity.enums.RoleEnum;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +29,7 @@ public class UserEntity {
     private Long id;
     private String mail;
     private String password;
+
     private String name;
     private String lastName;
     @ManyToOne(fetch = FetchType.EAGER)
