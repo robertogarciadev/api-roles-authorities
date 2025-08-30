@@ -29,7 +29,6 @@ public class UserEntity {
     private Long id;
     private String mail;
     private String password;
-
     private String name;
     private String lastName;
     @ManyToOne(fetch = FetchType.EAGER)
