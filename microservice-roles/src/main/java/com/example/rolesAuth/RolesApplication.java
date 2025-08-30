@@ -54,7 +54,7 @@ public class RolesApplication {
 			// CREATE ROLES
 			RoleEntity roleAdmin = RoleEntity.builder()
 			.name(RoleEnum.ADMIN.name())
-			.listAuth(Set.of(
+			.listPermission(Set.of(
 					permissionCreate,
 					permissionRead,
 					permissionUpdate, 
@@ -62,14 +62,14 @@ public class RolesApplication {
 
 			RoleEntity roleUser = RoleEntity.builder()
 			.name(RoleEnum.USER.name())
-			.listAuth(Set.of(
+			.listPermission(Set.of(
 					permissionCreate,
 					permissionRead,
 					permissionUpdate)).build();
 
 			RoleEntity roleInvited = RoleEntity.builder()
 			.name(RoleEnum.INVITED.name())
-			.listAuth(Set.of(permissionRead)).build();
+			.listPermission(Set.of(permissionRead)).build();
 
 			//SAVE ROLES
 			roleRepository.saveAll(List.of(

@@ -14,7 +14,6 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -40,5 +39,5 @@ public class RoleEntity {
         joinColumns = @JoinColumn(name="id_role"),
         inverseJoinColumns = @JoinColumn(name="id_permission")
     )
-    Set<PermissionEntity> listAuth;
+    Set<PermissionEntity> listPermission;
 }
