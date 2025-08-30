@@ -39,5 +39,5 @@ public class RoleEntity {
         joinColumns = @JoinColumn(name="id_role"),
         inverseJoinColumns = @JoinColumn(name="id_permission")
     )
-    Set<PermissionEntity> listAuth;
+    Set<PermissionEntity> listPermission;
 }

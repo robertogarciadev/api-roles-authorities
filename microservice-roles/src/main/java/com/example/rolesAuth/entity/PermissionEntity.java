@@ -28,7 +28,7 @@ public class PermissionEntity {
 
     private String name;
 
-    @ManyToMany(mappedBy = "listAuth")
+    @ManyToMany(mappedBy = "listPermission")
     @Builder.Default
     private Set<RoleEntity> roles = new HashSet<>();
 }

@@ -19,7 +19,7 @@ public class RoleService {
         return roleRepository.findAll().stream()
                 .map(role -> {
                     //map list Permission by role to pass it on later to RoleDTO 
-                    Set<PermissionDTO> listPermissionDTO = role.getListAuth().stream()
+                    Set<PermissionDTO> listPermissionDTO = role.getListPermission().stream()
                             .map(permission -> {
                                 return PermissionDTO.builder()
                                         .id(permission.getId())
