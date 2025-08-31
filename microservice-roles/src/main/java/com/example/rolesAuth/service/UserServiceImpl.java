@@ -82,6 +82,10 @@ public class UserServiceImpl implements UserService {
         });
     }
 
+    @Override
+    public boolean existsByMail(String mail){
+        return  userRepository.existsByMail(mail);
+    }
 
 
     private UserDTO userEntityToDTO(UserEntity entity, RoleDTO roleDTO) {

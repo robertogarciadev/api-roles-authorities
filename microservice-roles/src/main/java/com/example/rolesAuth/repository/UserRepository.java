@@ -9,4 +9,5 @@ import com.example.rolesAuth.entity.UserEntity;
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     Optional<UserEntity> findByMail(String mail);
+    boolean existsByMail(String mail);
 }

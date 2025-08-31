@@ -9,4 +9,5 @@ public interface UserService {
     List<UserDTO> getAllUsers();
     Optional<UserDTO> save(UserDTO dto);
     Optional<UserDTO> findByMail(String mail);
+    boolean existsByMail(String mail);
 }
