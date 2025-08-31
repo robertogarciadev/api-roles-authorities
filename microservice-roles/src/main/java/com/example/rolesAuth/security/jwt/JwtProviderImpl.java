@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 import javax.crypto.SecretKey;
 
-import org.hibernate.annotations.Comment;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -45,20 +44,12 @@ public class JwtProviderImpl implements JwtProvider {
 
     @Override
     public boolean isTokenValid(HttpServletRequest request) {
-
         Claims claims = extractClaims(request);
-
-        if (claims != null && claims.getExpiration().after(new Date())) {
-            return true;
-        }
-
-        return false;
+        return claims != null && claims.getExpiration().after(new Date());
     }
 
     @Override
-    public String generateToken(Authentication auth) {
-
-        CustomUserPrincipal user = (CustomUserPrincipal) auth.getPrincipal();
+    public String generateToken(CustomUserPrincipal user) {
 
         String subject = user.getMail();
         long id = user.getId();
@@ -91,7 +82,7 @@ public class JwtProviderImpl implements JwtProvider {
         long id = claims.get("userId", Long.class);
         String[] authoritiesString = claims.get("authorities").toString().split(",");
         Set<GrantedAuthority> grantedAuthorities = Arrays.stream(authoritiesString)
-                .map(item -> new SimpleGrantedAuthority(item))
+                .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toSet());
 
         UserDetails customUserPrincipal = CustomUserPrincipal.builder()

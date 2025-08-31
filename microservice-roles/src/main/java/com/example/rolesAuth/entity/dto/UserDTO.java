@@ -16,4 +16,5 @@ public class UserDTO {
     private String lastName;
     private String password;
     private RoleDTO role;
+    private String token;
 }
