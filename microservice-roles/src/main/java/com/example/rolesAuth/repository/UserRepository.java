@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.example.rolesAuth.entity.UserEntity;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserEntity, String> {
+public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     Optional<UserEntity> findByMail(String mail);
 }

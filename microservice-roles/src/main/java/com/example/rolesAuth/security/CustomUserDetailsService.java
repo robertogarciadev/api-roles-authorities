@@ -1,18 +1,20 @@
 package com.example.rolesAuth.security;
 
-import java.util.Optional;
+import java.lang.management.GarbageCollectorMXBean;
+import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-import javax.management.relation.Role;
-
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import com.example.rolesAuth.entity.dto.PermissionDTO;
 import com.example.rolesAuth.entity.dto.RoleDTO;
-import com.example.rolesAuth.entity.dto.UserDTO;
 import com.example.rolesAuth.service.UserService;
 import com.example.rolesAuth.util.SecurityUtils;
 
@@ -26,10 +28,19 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         CustomUserPrincipal customUserPrincipal = userService.findByMail(mail)
                 .map(userDTO -> {
-                    // Convert Role of user to GrantedAuthority
-                    RoleDTO roleDTO = userDTO.getRole();
-                    Set<GrantedAuthority> authorities = Set.of(
-                            SecurityUtils.convertToAuthority(roleDTO));
+                    //Convert Role to SimpleGrantedAuthority
+                    SimpleGrantedAuthority role = SecurityUtils.convertToAuthority(userDTO.getRole());
+                    //Convert Permission to SimpleGrantedAutority
+                    Set<SimpleGrantedAuthority> permissionList = userDTO.getRole().getListPermission().stream()
+                    .map(permission-> new SimpleGrantedAuthority(permission.getName()))
+                    .collect(Collectors.toSet());
+
+                    // It is created to Set<GrantedAuthority> for insert roles and permission and then
+                    //pass an propertie to CustomUserPrincipal() 
+                    Set<GrantedAuthority> authorities = new HashSet<>();
+                    authorities.add(role);
+                    authorities.addAll(permissionList);
+                    
 
                     return CustomUserPrincipal.builder()
                             .id(userDTO.getId())
