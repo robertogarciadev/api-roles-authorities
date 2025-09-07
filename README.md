@@ -36,3 +36,23 @@ Access control is handled via **roles** and **authorities**, ensuring that only 
 ✅ Documentación de pruebas con Postman.
 
 ✅ Dockerfile para empaquetar y desplegar la aplicación fácilmente. 
+
+---
+
+🛠️ Tecnologías utilizadas
+
+Java 17
+
+Spring Boot 3
+
+Spring Security
+
+Spring Data JPA (Hibernate)
+
+JWT (JSON Web Tokens)
+
+MySQL (puede adaptarse a PostgreSQL u otro motor)
+
+Docker
+
+Postman
