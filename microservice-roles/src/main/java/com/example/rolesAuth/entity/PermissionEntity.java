@@ -14,7 +14,6 @@ import lombok.*;
 
 
 @Entity
-
 @Getter
 @Setter
 @NoArgsConstructor

@@ -2,6 +2,8 @@ package com.example.rolesAuth.entity;
 
 
 import com.example.rolesAuth.entity.enums.RoleEnum;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +29,7 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String mail;
     private String password;
     private String name;
