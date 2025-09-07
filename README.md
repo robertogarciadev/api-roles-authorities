@@ -17,9 +17,22 @@ Access control is handled via **roles** and **authorities**, ensuring that only 
 
 ---
 
-## ⚙️ Características  
-- 🔑 Autenticación con **JWT**  
-- 👥 Gestión de **roles y authorities**  
-- 🔒 Endpoints protegidos según permisos  
-- 📡 Arquitectura **RESTful**  
-- 🛠️ Preparado para integrarse con otros servicios  
+📌 Características principales
+
+✅ Spring Boot como framework principal.
+
+✅ Spring Data JPA para la persistencia con Hibernate.
+
+✅ Spring Security + JWT para autenticación y autorización en cada petición.
+
+✅ Gestión de roles y permisos: control de acceso a endpoints según el rol del usuario.
+
+✅ PasswordEncoder + UserDetails para manejo seguro de contraseñas y usuarios.
+
+✅ Arquitectura por capas: model, repository, service, controller.
+
+✅ Manejo centralizado de excepciones con GlobalExceptionHandler.
+
+✅ Documentación de pruebas con Postman.
+
+✅ Dockerfile para empaquetar y desplegar la aplicación fácilmente. 
