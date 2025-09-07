@@ -64,7 +64,7 @@ public class JwtProviderImpl implements JwtProvider {
                 .subject(subject)
                 .issuedAt(currentDate)
                 .expiration(expirationDate)
-                .claim("autorities", autorities)
+                .claim("authorities", autorities)
                 .claim("userId", id)
                 .signWith(secretKey)
                 .compact();

@@ -20,7 +20,7 @@ public class CustomUserPrincipal implements UserDetails {
 
     private Long id;
     private String mail;
-    transient private String password;
+    private String password;
     private String name;
     private String lastName;
     private Set<GrantedAuthority> authorities;

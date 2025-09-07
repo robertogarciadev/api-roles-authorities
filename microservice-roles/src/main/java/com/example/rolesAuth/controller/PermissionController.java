@@ -17,7 +17,7 @@ public class PermissionController {
     PermissionService permissionService;
 
     @GetMapping("/all-permission")
-    public ResponseEntity<?> getAllpermission() {
+    public ResponseEntity<?> getAllPermission() {
         return (!permissionService.getAllPermission().isEmpty())
                 ? ResponseEntity.status(HttpStatus.OK).body(permissionService.getAllPermission())
                 : ResponseEntity.status(HttpStatus.NO_CONTENT).body(permissionService.getAllPermission());
