@@ -50,6 +50,7 @@ public class SecurityConfig {
                             UrlProvider.ROLE_CONTROLLER_ALL_ROLES
                     ).permitAll();
                     http.requestMatchers("/api/controller/test/**").authenticated();
+                    http.anyRequest().denyAll();
                 })
                 .authenticationManager(authenticationManager)
                 .addFilterBefore(jwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
