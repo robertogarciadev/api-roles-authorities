@@ -41,7 +41,7 @@ Access control is handled via **roles** and **authorities**, ensuring that only 
 
 🛠️ Tecnologías utilizadas
 
-Java 17
+Java 21
 
 Spring Boot 3
 
@@ -51,8 +51,18 @@ Spring Data JPA (Hibernate)
 
 JWT (JSON Web Tokens)
 
-MySQL (puede adaptarse a PostgreSQL u otro motor)
+PostGres (puede adaptarse a PostgreSQL u otro motor)
 
 Docker
 
 Postman
+
+---
+
+✨ Próximas mejoras
+
+📌 Documentación automática con Swagger/OpenAPI.
+
+📌 Tests unitarios e integración con JUnit + Mockito.
+
+📌 Pipeline de CI/CD con GitHub Actions.
