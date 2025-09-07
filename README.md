@@ -51,7 +51,7 @@ Spring Data JPA (Hibernate)
 
 JWT (JSON Web Tokens)
 
-PostGres (puede adaptarse a PostgreSQL u otro motor)
+PostGres
 
 Docker
 
