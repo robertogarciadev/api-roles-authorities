@@ -28,7 +28,6 @@ public class SecurityConfig {
      */
 
 
-
     @Bean
     AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
             throws Exception {
@@ -47,7 +46,11 @@ public class SecurityConfig {
                             UrlProvider.AUTHENTICATION_CONTROLLER_SING_IN,
                             UrlProvider.AUTHENTICATION_CONTROLLER_SING_UP,
                             UrlProvider.PERMISSION_CONTROLLER_ALL_PERMISSION,
-                            UrlProvider.ROLE_CONTROLLER_ALL_ROLES
+                            UrlProvider.ROLE_CONTROLLER_ALL_ROLES,
+                            "/swagger-ui.html",
+                            "/swagger-ui/**",
+                            "/v3/api-docs/**",
+                            "/v3/api-docs"
                     ).permitAll();
                     http.requestMatchers("/api/controller/test/**").authenticated();
                     http.anyRequest().denyAll();

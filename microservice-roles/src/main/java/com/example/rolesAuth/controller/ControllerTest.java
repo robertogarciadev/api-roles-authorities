@@ -1,11 +1,13 @@
 package com.example.rolesAuth.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/controller/test")
+@Tag(name = "Test", description = "EndPoints test")
 public class ControllerTest {
 
     //@PreAuthorize("hasRole('ADMIN')")
