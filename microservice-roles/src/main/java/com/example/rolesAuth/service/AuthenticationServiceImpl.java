@@ -40,16 +40,18 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         Authentication auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(dto.getMail(), dto.getPassword()));
 
-        CustomUserPrincipal userPrincipal = (CustomUserPrincipal) auth.getPrincipal();
-        
-        String token = jwtProvider.generateToken(userPrincipal);
+        if (auth.getPrincipal() instanceof CustomUserPrincipal userPrincipal){
 
-        return Optional.of(UserJWTDTO.builder()
-                .id(userPrincipal.getId())
-                .mail(userPrincipal.getMail())
-                .name(userPrincipal.getName())
-                .lastName(userPrincipal.getLastName())
-                .token(token)
-                .build());
+            String token = jwtProvider.generateToken(userPrincipal);
+
+            return Optional.of(UserJWTDTO.builder()
+                    .id(userPrincipal.getId())
+                    .mail(userPrincipal.getMail())
+                    .name(userPrincipal.getName())
+                    .lastName(userPrincipal.getLastName())
+                    .token(token)
+                    .build());
+        }
+        return Optional.empty();
     }
 }

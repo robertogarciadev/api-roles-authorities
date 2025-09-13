@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 
+import com.example.rolesAuth.entity.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,12 +14,7 @@ import org.springframework.stereotype.Service;
 import com.example.rolesAuth.entity.PermissionEntity;
 import com.example.rolesAuth.entity.RoleEntity;
 import com.example.rolesAuth.entity.UserEntity;
-import com.example.rolesAuth.entity.dto.RoleDTO;
-import com.example.rolesAuth.entity.dto.UserCreateDTO;
-import com.example.rolesAuth.entity.dto.UserPrincipalDTO;
-import com.example.rolesAuth.entity.dto.UserResponseDTO;
 import com.example.rolesAuth.exception.EmailAlreadyExistsException;
-import com.example.rolesAuth.entity.dto.PermissionDTO;
 import com.example.rolesAuth.repository.RoleRepository;
 import com.example.rolesAuth.repository.UserRepository;
 
@@ -92,12 +88,12 @@ public class UserServiceImpl implements UserService {
                 .map(user -> {
                     Set<PermissionDTO> permission = permissionEntityToDTO(user.getRole().getListPermission());
                     RoleDTO roleDTO = roleEntityToDTO(user.getRole(), permission);
+
                     return UserPrincipalDTO.builder()
                     .id(user.getId())
                     .mail(user.getMail())
                     .name(user.getName())
                     .lastName(user.getLastName())
-                    .password(user.getPassword())
                     .role(roleDTO)
                     .build();
                 });
